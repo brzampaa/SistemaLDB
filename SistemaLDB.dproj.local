@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019/05/29 19:05:20.000.619,=C:\Users\Zampaa'\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/05/29 19:33:59.000.334,C:\Users\Zampaa'\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\Zampaa'\Documents\Embarcadero\Studio\Projects\Sistema LBD\LDB.VCL.Menu.dfm</Transaction>
+    <Transaction>2019/05/29 19:33:59.000.334,C:\Users\Zampaa'\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\Zampaa'\Documents\Embarcadero\Studio\Projects\Sistema LBD\LDB.VCL.Menu.pas</Transaction>
+    <Transaction>2019/05/29 19:34:35.000.691,C:\Users\Zampaa'\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\Zampaa'\Documents\Embarcadero\Studio\Projects\Sistema LBD\SistemaLDB.dproj</Transaction>
+    <Transaction>2019/05/29 19:36:10.000.025,C:\Users\Zampaa'\Documents\Embarcadero\Studio\Projects\Sistema LBD\LDB.VCL.Menu.pas=C:\Users\Zampaa'\Documents\Embarcadero\Studio\Projects\Sistema LBD\src\LDB.VCL.Menu.pas</Transaction>
+    <Transaction>2019/05/29 19:36:10.000.025,C:\Users\Zampaa'\Documents\Embarcadero\Studio\Projects\Sistema LBD\LDB.VCL.Menu.dfm=C:\Users\Zampaa'\Documents\Embarcadero\Studio\Projects\Sistema LBD\src\LDB.VCL.Menu.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

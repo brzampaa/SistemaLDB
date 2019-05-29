@@ -1,0 +1,14 @@
+program SistemaLDB;
+
+uses
+  Vcl.Forms,
+  LDB.VCL.Menu in 'src\LDB.VCL.Menu.pas' {FrmMenu};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFrmMenu, FrmMenu);
+  Application.Run;
+end.

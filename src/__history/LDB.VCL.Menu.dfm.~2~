@@ -1,0 +1,60 @@
+object FrmMenu: TFrmMenu
+  Left = 0
+  Top = 0
+  Caption = 'Sistema LDB'
+  ClientHeight = 453
+  ClientWidth = 847
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = MainMenu1
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object MainMenu1: TMainMenu
+    Left = 376
+    Top = 168
+    object Cadastros1: TMenuItem
+      Caption = 'Cadastros'
+      object Clientes1: TMenuItem
+        Caption = 'Clientes'
+      end
+      object Items1: TMenuItem
+        Caption = 'Itens'
+      end
+    end
+    object Pedidos1: TMenuItem
+      Caption = 'Pedidos'
+      object Novo1: TMenuItem
+        Caption = 'Novo'
+      end
+      object Pesquisar1: TMenuItem
+        Caption = 'Pesquisar'
+      end
+    end
+    object Estoque1: TMenuItem
+      Caption = 'Estoque'
+      object Entrada1: TMenuItem
+        Caption = 'Entrada'
+      end
+      object Sada1: TMenuItem
+        Caption = 'Sa'#237'da'
+      end
+    end
+    object Relatrios1: TMenuItem
+      Caption = 'Relat'#243'rios'
+      object Cientes1: TMenuItem
+        Caption = 'Clientes'
+      end
+      object Estoque2: TMenuItem
+        Caption = 'Estoque'
+      end
+      object Pedidos2: TMenuItem
+        Caption = 'Pedidos'
+      end
+    end
+  end
+end
