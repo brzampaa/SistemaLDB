@@ -13,9 +13,11 @@ object FrmClientes: TFrmClientes
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object Image1: TImage
+  object imgBkg: TImage
     Left = 0
     Top = 0
     Width = 680
@@ -13646,18 +13648,15 @@ object FrmClientes: TFrmClientes
     Margins.Top = 20
     Margins.Right = 20
     Margins.Bottom = 20
-    ActivePage = pgPesquisar
+    ActivePage = pgNovo
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 675
     object pgPesquisar: TTabSheet
       AlignWithMargins = True
       Margins.Left = 5
       Margins.Right = 5
       Margins.Bottom = 5
       Caption = 'Pesquisar'
-      ExplicitLeft = -39
-      ExplicitTop = 99
       object lblPesquisar: TLabel
         Left = 3
         Top = 3
@@ -13731,8 +13730,247 @@ object FrmClientes: TFrmClientes
     object pgNovo: TTabSheet
       Caption = 'Novo Cliente'
       ImageIndex = 1
-      ExplicitWidth = 691
-      ExplicitHeight = 383
+      object lblID: TLabel
+        Left = 50
+        Top = 24
+        Width = 11
+        Height = 15
+        Caption = 'ID'
+      end
+      object lblTitulo: TLabel
+        Left = 50
+        Top = 58
+        Width = 26
+        Height = 13
+        Caption = 'T'#237'tulo'
+      end
+      object lblNome: TLabel
+        Left = 49
+        Top = 104
+        Width = 27
+        Height = 13
+        Caption = 'Nome'
+      end
+      object lblSobrenome: TLabel
+        Left = 49
+        Top = 150
+        Width = 54
+        Height = 13
+        Caption = 'Sobrenome'
+      end
+      object lblEndereco: TLabel
+        Left = 338
+        Top = 58
+        Width = 45
+        Height = 13
+        Caption = 'Endere'#231'o'
+      end
+      object lblNumero: TLabel
+        Left = 534
+        Top = 58
+        Width = 37
+        Height = 13
+        Caption = 'N'#250'mero'
+      end
+      object lblComplemento: TLabel
+        Left = 338
+        Top = 104
+        Width = 65
+        Height = 13
+        Caption = 'Complemento'
+      end
+      object lblCidade: TLabel
+        Left = 338
+        Top = 150
+        Width = 33
+        Height = 13
+        Caption = 'Cidade'
+      end
+      object lblEstado: TLabel
+        Left = 338
+        Top = 196
+        Width = 33
+        Height = 13
+        Caption = 'Estado'
+      end
+      object lblCEP: TLabel
+        Left = 338
+        Top = 242
+        Width = 19
+        Height = 13
+        Caption = 'CEP'
+      end
+      object lblTelefone: TLabel
+        Left = 49
+        Top = 196
+        Width = 42
+        Height = 13
+        Caption = 'Telefone'
+      end
+      object lblCelular: TLabel
+        Left = 49
+        Top = 242
+        Width = 33
+        Height = 13
+        Caption = 'Celular'
+      end
+      object txtID: TEdit
+        Left = 65
+        Top = 21
+        Width = 49
+        Height = 21
+        Enabled = False
+        TabOrder = 0
+      end
+      object cbxTitulo: TComboBox
+        Left = 49
+        Top = 77
+        Width = 244
+        Height = 21
+        Style = csDropDownList
+        DropDownCount = 2
+        ItemIndex = 0
+        TabOrder = 1
+        Text = 'Sr.'
+        Items.Strings = (
+          'Sr.'
+          'Sra.')
+      end
+      object txtNome: TEdit
+        Left = 50
+        Top = 123
+        Width = 246
+        Height = 21
+        TabOrder = 2
+      end
+      object txtSobrenome: TEdit
+        Left = 50
+        Top = 169
+        Width = 245
+        Height = 21
+        TabOrder = 3
+      end
+      object txtEndereco: TEdit
+        Left = 338
+        Top = 77
+        Width = 190
+        Height = 21
+        TabOrder = 4
+      end
+      object txtNumero: TEdit
+        Left = 534
+        Top = 77
+        Width = 48
+        Height = 21
+        NumbersOnly = True
+        TabOrder = 5
+      end
+      object txtComplemento: TEdit
+        Left = 338
+        Top = 123
+        Width = 244
+        Height = 21
+        TabOrder = 6
+      end
+      object txtCidade: TEdit
+        Left = 338
+        Top = 169
+        Width = 244
+        Height = 21
+        TabOrder = 7
+      end
+      object cbxEstado: TComboBox
+        Left = 338
+        Top = 215
+        Width = 244
+        Height = 21
+        Style = csDropDownList
+        ItemIndex = 0
+        TabOrder = 8
+        Text = 'AC'
+        Items.Strings = (
+          'AC'
+          'AL'
+          'AP'
+          'AM'
+          'BA'
+          'CE'
+          'DF'
+          'ES'
+          'GO'
+          'MA'
+          'MT'
+          'MS'
+          'MG'
+          'PA'
+          'PB'
+          'PR'
+          'PE'
+          'PI'
+          'RJ'
+          'RN'
+          'RS'
+          'RO'
+          'RR'
+          'SC'
+          'SP'
+          'SE'
+          'TO')
+      end
+      object txtCEP: TMaskEdit
+        Left = 338
+        Top = 261
+        Width = 244
+        Height = 21
+        EditMask = '00000\-000;0;_'
+        MaxLength = 9
+        TabOrder = 9
+        Text = ''
+      end
+      object txtTelefone: TMaskEdit
+        Left = 50
+        Top = 215
+        Width = 245
+        Height = 21
+        EditMask = '\(00\) 0000 0000;0;_'
+        MaxLength = 14
+        TabOrder = 10
+        Text = ''
+      end
+      object txtCelular: TMaskEdit
+        Left = 50
+        Top = 261
+        Width = 244
+        Height = 21
+        EditMask = '\(00\) 0 0000 0000;0;_'
+        MaxLength = 16
+        TabOrder = 11
+        Text = ''
+      end
+      object btnSalvar: TButton
+        Left = 507
+        Top = 312
+        Width = 75
+        Height = 25
+        Caption = 'Salvar'
+        TabOrder = 12
+      end
+      object btnEditar: TButton
+        Left = 282
+        Top = 312
+        Width = 75
+        Height = 25
+        Caption = 'Editar'
+        TabOrder = 13
+      end
+      object btnCancelar: TButton
+        Left = 49
+        Top = 312
+        Width = 75
+        Height = 25
+        Caption = 'Cancelar'
+        TabOrder = 14
+      end
     end
   end
 end

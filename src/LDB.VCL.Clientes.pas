@@ -5,11 +5,11 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.Imaging.pngimage,
-  Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls;
+  Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Mask;
 
 type
   TFrmClientes = class(TForm)
-    Image1: TImage;
+    imgBkg: TImage;
     pgcClientes: TPageControl;
     pgPesquisar: TTabSheet;
     pgNovo: TTabSheet;
@@ -17,8 +17,37 @@ type
     lblPesquisar: TLabel;
     txtPesquisar: TEdit;
     cbxCategoria: TComboBox;
+    lblID: TLabel;
+    txtID: TEdit;
+    cbxTitulo: TComboBox;
+    lblTitulo: TLabel;
+    lblNome: TLabel;
+    txtNome: TEdit;
+    lblSobrenome: TLabel;
+    txtSobrenome: TEdit;
+    lblEndereco: TLabel;
+    txtEndereco: TEdit;
+    lblNumero: TLabel;
+    txtNumero: TEdit;
+    txtComplemento: TEdit;
+    lblComplemento: TLabel;
+    txtCidade: TEdit;
+    lblCidade: TLabel;
+    cbxEstado: TComboBox;
+    lblEstado: TLabel;
+    lblCEP: TLabel;
+    txtCEP: TMaskEdit;
+    txtTelefone: TMaskEdit;
+    txtCelular: TMaskEdit;
+    lblTelefone: TLabel;
+    lblCelular: TLabel;
+    btnSalvar: TButton;
+    btnEditar: TButton;
+    btnCancelar: TButton;
     procedure txtPesquisarKeyUp(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -33,6 +62,16 @@ implementation
 {$R *.dfm}
 
 uses LBD.SQL.DataModule;
+
+procedure TFrmClientes.FormCreate(Sender: TObject);
+begin
+  pgcClientes.TabIndex := 0;
+end;
+
+procedure TFrmClientes.FormShow(Sender: TObject);
+begin
+  LBD.SQL.DataModule.dm.Query.Open;
+end;
 
 procedure TFrmClientes.txtPesquisarKeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
