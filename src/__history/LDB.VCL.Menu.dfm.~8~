@@ -13638,7 +13638,7 @@ object FrmMenu: TFrmMenu
     ExplicitLeft = 184
     ExplicitTop = 40
   end
-  object btnClientes: TSpeedButton
+  object SpeedButton1: TSpeedButton
     Left = 53
     Top = 61
     Width = 145
@@ -15696,7 +15696,7 @@ object FrmMenu: TFrmMenu
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000}
   end
-  object btnPedidos: TSpeedButton
+  object SpeedButton2: TSpeedButton
     Left = 212
     Top = 61
     Width = 145
@@ -17754,7 +17754,7 @@ object FrmMenu: TFrmMenu
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000}
   end
-  object btnEstoque: TSpeedButton
+  object SpeedButton3: TSpeedButton
     Left = 372
     Top = 61
     Width = 145
@@ -19812,7 +19812,7 @@ object FrmMenu: TFrmMenu
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000}
   end
-  object btnRelatorios: TSpeedButton
+  object SpeedButton4: TSpeedButton
     Left = 533
     Top = 61
     Width = 145
