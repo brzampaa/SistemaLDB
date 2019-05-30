@@ -30,6 +30,4 @@ implementation
 
 {$R *.dfm}
 
-uses LBD.SQL.DataModule;
-
 end.

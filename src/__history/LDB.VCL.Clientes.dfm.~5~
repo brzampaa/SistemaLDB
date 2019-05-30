@@ -13674,7 +13674,6 @@ object FrmClientes: TFrmClientes
         Width = 616
         Height = 284
         Align = alBottom
-        DataSource = DataModule1.DS
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText

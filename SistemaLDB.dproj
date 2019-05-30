@@ -98,8 +98,13 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\LDB.VCL.Clientes.pas">
-            <Form>Form1</Form>
+            <Form>FrmClientes</Form>
             <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\LBD.SQL.DataModule.pas">
+            <Form>DataModule1</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

@@ -8,12 +8,12 @@ uses
   Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls;
 
 type
-  TFrmClientes = class(TForm)
+  TForm1 = class(TForm)
     Image1: TImage;
     pgcClientes: TPageControl;
     pgPesquisar: TTabSheet;
     pgNovo: TTabSheet;
-    dbgClientes: TDBGrid;
+    DBGrid1: TDBGrid;
     lblPesquisar: TLabel;
     txtPesquisar: TEdit;
     cbxCategoria: TComboBox;
@@ -24,12 +24,10 @@ type
   end;
 
 var
-  FrmClientes: TFrmClientes;
+  Form1: TForm1;
 
 implementation
 
 {$R *.dfm}
-
-uses LBD.SQL.DataModule;
 
 end.
