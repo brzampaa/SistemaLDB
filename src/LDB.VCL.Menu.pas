@@ -33,6 +33,8 @@ type
     lblEstoque: TLabel;
     lblRelatorios: TLabel;
     procedure Novo1Click(Sender: TObject);
+    procedure btnClientesClick(Sender: TObject);
+    procedure Clientes1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,6 +47,20 @@ var
 implementation
 
 {$R *.dfm}
+
+uses LDB.VCL.Clientes;
+
+procedure TFrmMenu.btnClientesClick(Sender: TObject);
+begin
+  FrmClientes := TFrmClientes.Create(self);
+  FrmClientes.ShowModal;
+end;
+
+procedure TFrmMenu.Clientes1Click(Sender: TObject);
+begin
+  FrmClientes := TFrmClientes.Create(self);
+  FrmClientes.ShowModal;
+end;
 
 procedure TFrmMenu.Novo1Click(Sender: TObject);
 begin

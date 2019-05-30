@@ -15695,6 +15695,7 @@ object FrmMenu: TFrmMenu
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000}
+    OnClick = btnClientesClick
   end
   object btnPedidos: TSpeedButton
     Left = 212
@@ -21906,6 +21907,7 @@ object FrmMenu: TFrmMenu
       object Clientes1: TMenuItem
         Caption = 'Clientes'
         ShortCut = 16451
+        OnClick = Clientes1Click
       end
       object Items1: TMenuItem
         Caption = 'Itens'

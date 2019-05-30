@@ -1,4 +1,4 @@
-object DataModule1: TDataModule1
+object dm: Tdm
   OldCreateOrder = False
   Height = 80
   Width = 190
@@ -17,6 +17,10 @@ object DataModule1: TDataModule1
   end
   object Query: TFDQuery
     Connection = Conn
+    SQL.Strings = (
+      
+        'SELECT id_cliente AS ID, CONCAT(nome, " ", sobrenome) AS Cliente' +
+        ', endereco AS Endere'#231'o, fone_fixo AS Telefone FROM tb_cliente')
     Left = 79
     Top = 17
   end

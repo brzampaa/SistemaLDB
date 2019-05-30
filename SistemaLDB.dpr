@@ -6,7 +6,7 @@ uses
   Vcl.Themes,
   Vcl.Styles,
   LDB.VCL.Clientes in 'src\LDB.VCL.Clientes.pas' {FrmClientes},
-  LBD.SQL.DataModule in 'src\LBD.SQL.DataModule.pas' {DataModule1: TDataModule};
+  LBD.SQL.DataModule in 'src\LBD.SQL.DataModule.pas' {dm: TDataModule};
 
 {$R *.res}
 
@@ -16,6 +16,6 @@ begin
   TStyleManager.TrySetStyle('Iceberg Classico');
   Application.CreateForm(TFrmMenu, FrmMenu);
   Application.CreateForm(TFrmClientes, FrmClientes);
-  Application.CreateForm(TDataModule1, DataModule1);
+  Application.CreateForm(Tdm, dm);
   Application.Run;
 end.

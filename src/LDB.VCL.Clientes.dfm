@@ -13656,10 +13656,8 @@ object FrmClientes: TFrmClientes
       Margins.Right = 5
       Margins.Bottom = 5
       Caption = 'Pesquisar'
-      ExplicitLeft = 14
-      ExplicitTop = 34
-      ExplicitWidth = 701
-      ExplicitHeight = 393
+      ExplicitLeft = -39
+      ExplicitTop = 99
       object lblPesquisar: TLabel
         Left = 3
         Top = 3
@@ -13674,13 +13672,39 @@ object FrmClientes: TFrmClientes
         Width = 616
         Height = 284
         Align = alBottom
-        DataSource = DataModule1.DS
+        DataSource = dm.DS
+        ReadOnly = True
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'ID'
+            Width = 37
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'Cliente'
+            Width = 194
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'Endere'#231'o'
+            Width = 255
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'Telefone'
+            Width = 113
+            Visible = True
+          end>
       end
       object txtPesquisar: TEdit
         Left = 3
@@ -13688,21 +13712,20 @@ object FrmClientes: TFrmClientes
         Width = 422
         Height = 21
         TabOrder = 1
+        OnKeyUp = txtPesquisarKeyUp
       end
       object cbxCategoria: TComboBox
         Left = 440
         Top = 22
-        Width = 179
+        Width = 169
         Height = 21
+        ItemIndex = 0
         TabOrder = 2
+        Text = 'Nome'
         Items.Strings = (
           'Nome'
           'Endere'#231'o'
-          'Telefone'
-          'Celular'
-          'Cidade'
-          'Estado'
-          'CEP')
+          'Telefone')
       end
     end
     object pgNovo: TTabSheet
