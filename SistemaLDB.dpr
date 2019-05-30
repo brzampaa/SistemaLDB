@@ -6,7 +6,8 @@ uses
   Vcl.Themes,
   Vcl.Styles,
   LDB.VCL.Clientes in 'src\LDB.VCL.Clientes.pas' {FrmClientes},
-  LBD.SQL.DataModule in 'src\LBD.SQL.DataModule.pas' {dm: TDataModule};
+  LBD.SQL.DataModule in 'src\LBD.SQL.DataModule.pas' {dm: TDataModule},
+  LDB.Cliente in 'src\LDB.Cliente.pas';
 
 {$R *.res}
 

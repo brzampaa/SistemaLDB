@@ -1,0 +1,17 @@
+unit LDB.Cliente;
+
+interface
+
+type
+
+TCliente = class
+  private
+  protected
+  public
+
+  published
+end;
+
+implementation
+
+end.

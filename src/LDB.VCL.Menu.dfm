@@ -21875,7 +21875,7 @@ object FrmMenu: TFrmMenu
     Left = 105
     Top = 212
     Width = 38
-    Height = 16
+    Height = 13
     Caption = 'Clientes'
   end
   object lblPedidos: TLabel
