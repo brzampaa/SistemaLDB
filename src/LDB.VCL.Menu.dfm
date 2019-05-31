@@ -21905,13 +21905,14 @@ object FrmMenu: TFrmMenu
     object Cadastros1: TMenuItem
       Caption = 'Clientes'
       object Clientes1: TMenuItem
-        Caption = 'Clientes'
-        ShortCut = 16451
+        Caption = 'Novo'
+        ShortCut = 16462
         OnClick = Clientes1Click
       end
       object Items1: TMenuItem
-        Caption = 'Itens'
-        ShortCut = 16457
+        Caption = 'Buscar'
+        ShortCut = 16451
+        OnClick = Items1Click
       end
     end
     object Pedidos1: TMenuItem
@@ -21919,12 +21920,12 @@ object FrmMenu: TFrmMenu
       ShortCut = 16464
       object Novo1: TMenuItem
         Caption = 'Novo'
-        ShortCut = 16462
+        ShortCut = 49230
         OnClick = Novo1Click
       end
       object Pesquisar1: TMenuItem
         Caption = 'Buscar'
-        ShortCut = 16450
+        ShortCut = 49232
       end
     end
     object Estoque1: TMenuItem

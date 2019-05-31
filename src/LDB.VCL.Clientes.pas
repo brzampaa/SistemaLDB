@@ -45,6 +45,7 @@ type
     btnSalvar: TSpeedButton;
     btnEditar: TSpeedButton;
     btnCancelar: TSpeedButton;
+    btnNovo: TSpeedButton;
     procedure txtPesquisarKeyUp(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormCreate(Sender: TObject);
@@ -53,9 +54,13 @@ type
     procedure btnCancelarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure pgPesquisarShow(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     procedure mostrarCliente;
+    procedure desativarCampos;
+    procedure ativarCampos;
   public
+    procedure novoCliente;
     { Public declarations }
   end;
 
@@ -69,26 +74,7 @@ implementation
 
 uses LBD.SQL.DataModule;
 
-procedure TFrmClientes.btnCancelarClick(Sender: TObject);
-begin
-  mostrarCliente;
-  cbxTitulo.Enabled := False;
-  txtNome.Enabled := False;
-  txtSobrenome.Enabled := False;
-  txtTelefone.Enabled := False;
-  txtCelular.Enabled := False;
-  txtEndereco.Enabled := False;
-  txtNumero.Enabled := False;
-  txtComplemento.Enabled := False;
-  txtCidade.Enabled := False;
-  cbxEstado.Enabled := False;
-  txtCEP.Enabled := False;
-  btnCancelar.Enabled := False;
-  btnSalvar.Enabled := False;
-  btnEditar.Enabled := True;
-end;
-
-procedure TFrmClientes.btnEditarClick(Sender: TObject);
+procedure TFrmClientes.ativarCampos;
 begin
   cbxTitulo.Enabled := True;
   txtNome.Enabled := True;
@@ -101,9 +87,32 @@ begin
   txtCidade.Enabled := True;
   cbxEstado.Enabled := True;
   txtCEP.Enabled := True;
+end;
+
+procedure TFrmClientes.btnCancelarClick(Sender: TObject);
+begin
+  if c <> nil then
+  begin
+    mostrarCliente;
+    desativarCampos;
+    btnCancelar.Enabled := False;
+    btnSalvar.Enabled := False;
+    btnEditar.Enabled := True;
+    btnNovo.Enabled := True;
+  end
+  else
+  begin
+    ModalResult := mrOk;
+  end;
+end;
+
+procedure TFrmClientes.btnEditarClick(Sender: TObject);
+begin
+  ativarCampos;
   btnCancelar.Enabled := True;
   btnSalvar.Enabled := True;
   btnEditar.Enabled := False;
+  btnNovo.Enabled := False;
 end;
 
 procedure TFrmClientes.btnSalvarClick(Sender: TObject);
@@ -127,6 +136,11 @@ begin
   if TCliente.Create.atualizar(Cli) then
   begin
     messageDlg('Cliente atualizado com sucesso!', mtInformation, [mbOk], 0);
+    desativarCampos;
+    btnSalvar.Enabled := False;
+    btnEditar.Enabled := True;
+    btnCancelar.Enabled := False;
+    btnNovo.Enabled := True;
   end;
 end;
 
@@ -136,11 +150,35 @@ begin
   mostrarCliente;
 end;
 
+procedure TFrmClientes.desativarCampos;
+begin
+  cbxTitulo.Enabled := False;
+  txtNome.Enabled := False;
+  txtSobrenome.Enabled := False;
+  txtTelefone.Enabled := False;
+  txtCelular.Enabled := False;
+  txtEndereco.Enabled := False;
+  txtNumero.Enabled := False;
+  txtComplemento.Enabled := False;
+  txtCidade.Enabled := False;
+  cbxEstado.Enabled := False;
+  txtCEP.Enabled := False;
+end;
+
+procedure TFrmClientes.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+if c <> nil then
+begin
+  c.Free;
+end;
+end;
+
 procedure TFrmClientes.FormCreate(Sender: TObject);
 var
   bmp: TBitmap;
 begin
   pgcClientes.TabIndex := 0;
+  dbgClientes.EditorMode := False;
 end;
 
 procedure TFrmClientes.mostrarCliente;
@@ -160,6 +198,16 @@ begin
   cbxEstado.ItemIndex := cbxEstado.Items.IndexOf(c.Estado);
   txtCEP.Text := c.CEP;
   pgcClientes.TabIndex := 1;
+end;
+
+procedure TFrmClientes.novoCliente;
+begin
+  pgcClientes.TabIndex := 1;
+  btnNovo.Enabled := False;
+  btnSalvar.Enabled := True;
+  btnEditar.Enabled := False;
+  btnCancelar.Enabled := True;
+  ativarCampos;
 end;
 
 procedure TFrmClientes.pgPesquisarShow(Sender: TObject);
