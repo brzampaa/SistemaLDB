@@ -1,7 +1,7 @@
 unit LDB.Cliente;
 
 interface
-
+uses SysUtils;
 type
 
 TCliente = class
@@ -49,6 +49,7 @@ TCliente = class
   property FgAtivo : integer read FFgAtivo write SetFgAtivo;
   function pesquisar(id : integer):TCliente;
   function atualizar(c : TCliente):boolean;
+  function salvar(c : TCliente):integer;
   published
 end;
 
@@ -132,6 +133,46 @@ begin
   end;
 end;
 
+function TCliente.salvar(c: TCliente): integer;
+begin
+  with LBD.SQL.DataModule.dm.Query do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Add('INSERT INTO tb_cliente (nome, sobrenome, titulo, cep, numero, complemento, cidade, endereco, fone_fixo, estado, fone_movel, fg_ativo)');
+    SQL.Add('VALUES (:nome, :sobrenome, :titulo, :cep, :numero, :complemento, :cidade, :endereco, :fone_fixo, :estado, :fone_movel, :fg_ativo);');
+
+    ParamByName('nome').Value := c.Nome;
+    ParamByName('sobrenome').Value := c.Sobrenome;
+    ParamByName('titulo').Value := c.Titulo;
+    ParamByName('cep').Value := c.CEP;
+    ParamByName('numero').Value := c.Numero;
+    ParamByName('complemento').Value := c.Complemento;
+    ParamByName('cidade').Value := c.Cidade;
+    ParamByName('endereco').Value := c.Endereco;
+    ParamByName('fone_fixo').Value := c.Telefone;
+    ParamByName('estado').Value := c.Estado;
+    ParamByName('fone_movel').Value := c.Celular;
+    ParamByName('fg_ativo').Value := 1;
+
+    ExecSQL;
+
+    Close;
+    SQL.Clear;
+    SQL.Add('SELECT LAST_INSERT_ID() as id_cliente;');
+    Open;
+
+    if RowsAffected > 0 then
+    begin
+      Result := FieldByName('id_cliente').AsInteger;
+    end
+    else
+    begin
+      Result := -1;
+    end;
+  end;
+end;
+
 procedure TCliente.SetCelular(const Value: string);
 begin
   FCelular := Value;
@@ -189,7 +230,16 @@ end;
 
 procedure TCliente.SetTelefone(const Value: string);
 begin
-  FTelefone := Value;
+  if Length(Value) = 10 then
+  begin
+    FTelefone := Value;
+  end
+  else
+  begin
+    raise Exception.Create('O número de telefone ' + Value +' é inválido.');
+  end;
+
+
 end;
 
 procedure TCliente.SetTitulo(const Value: string);

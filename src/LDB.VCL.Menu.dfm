@@ -16,7 +16,7 @@ object FrmMenu: TFrmMenu
   Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
-  object Image1: TImage
+  object imgBkp: TImage
     Left = 0
     Top = 0
     Width = 730

@@ -23,7 +23,7 @@ type
     Estoque2: TMenuItem;
     Pedidos2: TMenuItem;
     Cientes1: TMenuItem;
-    Image1: TImage;
+    imgBkp: TImage;
     btnClientes: TSpeedButton;
     btnPedidos: TSpeedButton;
     btnEstoque: TSpeedButton;
