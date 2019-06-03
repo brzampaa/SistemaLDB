@@ -57,6 +57,7 @@ type
     procedure pgPesquisarShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnNovoClick(Sender: TObject);
+    procedure btnExcluirClick(Sender: TObject);
   private
     procedure mostrarCliente;
     procedure desativarCampos;
@@ -123,11 +124,35 @@ begin
   btnExcluir.Enabled := False;
 end;
 
+procedure TFrmClientes.btnExcluirClick(Sender: TObject);
+var
+  res : Integer;
+  Cliente : String;
+begin
+  //res := messageDlg('Deseja realmente excluir o cliente: ' + '[' + txtID.Text + '] ' + txtNome.Text + ' ' + txtSobrenome.Text, mtError, mbOkCancel, 0);
+  Cliente := PChar('Deseja realmente excluir o cliente: ' + '[' + txtID.Text + '] ' + txtNome.Text + ' ' + txtSobrenome.Text) + '?';
+  res := Application.MessageBox(PChar(Cliente), 'Atenção!', mb_OKCANCEL + mb_iconquestion + MB_SYSTEMMODAL);
+  if res = mrOk then
+  begin
+    if TCliente.Create.deletar(strToInt(txtId.Text)) then
+    begin
+      Application.MessageBox('Cliente excluído com sucesso!', 'Confirmação', MB_ICONINFORMATION);
+      novoCliente;
+      limparCampos;
+      FreeAndNil(c);
+    end
+    else
+    begin
+      Application.MessageBox('Falha ao excluir cliente!', 'Erro!', MB_ICONERROR);
+    end;
+  end;
+end;
+
 procedure TFrmClientes.btnNovoClick(Sender: TObject);
 begin
   ativarCampos;
-  limparCampos;
   novoCliente;
+  limparCampos;
   FreeAndNil(c);
 end;
 
@@ -172,7 +197,7 @@ begin
   end
   else
   begin
-    clienteId := TCliente.Create.salvar(Cli);
+    clienteId := TCliente.Create.inserir(Cli);
     if clienteId <> -1 then
     begin
       messageDlg('Cliente registrado com sucesso!', mtInformation, [mbOk], 0);
@@ -196,6 +221,12 @@ procedure TFrmClientes.dbgClientesDblClick(Sender: TObject);
 begin
   clienteId := strToInt(dbgClientes.Columns.Items[0].Field.Text);
   mostrarCliente;
+  desativarCampos;
+  btnCancelar.Enabled := False;
+  btnSalvar.Enabled := False;
+  btnEditar.Enabled := True;
+  btnNovo.Enabled := True;
+  btnExcluir.Enabled := True;
 end;
 
 procedure TFrmClientes.desativarCampos;

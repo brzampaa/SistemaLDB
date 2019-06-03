@@ -1,4 +1,4 @@
-unit LDB.Cliente;
+ï»¿unit LDB.Cliente;
 
 interface
 uses SysUtils;
@@ -49,8 +49,7 @@ TCliente = class
   property FgAtivo : integer read FFgAtivo write SetFgAtivo;
   function pesquisar(id : integer):TCliente;
   function atualizar(c : TCliente):boolean;
-  function inserir(c : TCliente):integer;
-  function deletar(id : integer):boolean;
+  function salvar(c : TCliente):integer;
 
   published
 end;
@@ -135,27 +134,7 @@ begin
   end;
 end;
 
-function TCliente.deletar(id: integer): boolean;
-begin
-with LBD.SQL.DataModule.dm.Query do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM tb_cliente WHERE id_cliente = :id');
-    ParamByName('id').Value := id;
-    ExecSQL;
-    if RowsAffected > 0 then
-    begin
-      Result := True;
-    end
-    else
-    begin
-      Result := False;
-    end;
-  end;
-end;
-
-function TCliente.inserir(c: TCliente): integer;
+function TCliente.salvar(c: TCliente): integer;
 begin
   with LBD.SQL.DataModule.dm.Query do
   begin
@@ -258,7 +237,7 @@ begin
   end
   else
   begin
-    raise Exception.Create('O número de telefone ' + Value +' é inválido.');
+    raise Exception.Create('O nÃºmero de telefone ' + Value +' Ã© invÃ¡lido.');
   end;
 
 

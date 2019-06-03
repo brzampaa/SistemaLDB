@@ -13648,7 +13648,7 @@ object FrmClientes: TFrmClientes
     Margins.Top = 20
     Margins.Right = 20
     Margins.Bottom = 20
-    ActivePage = pgNovo
+    ActivePage = pgPesquisar
     Align = alClient
     TabOrder = 0
     object pgPesquisar: TTabSheet
@@ -15161,6 +15161,7 @@ object FrmClientes: TFrmClientes
           0000000000000000000000000000000000000000000000000000}
         NumGlyphs = 2
         Spacing = 10
+        OnClick = btnExcluirClick
       end
       object txtID: TEdit
         Left = 65

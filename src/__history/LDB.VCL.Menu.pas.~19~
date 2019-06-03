@@ -23,7 +23,7 @@ type
     Estoque2: TMenuItem;
     Pedidos2: TMenuItem;
     Cientes1: TMenuItem;
-    Image1: TImage;
+    imgBkp: TImage;
     btnClientes: TSpeedButton;
     btnPedidos: TSpeedButton;
     btnEstoque: TSpeedButton;
@@ -35,6 +35,7 @@ type
     procedure Novo1Click(Sender: TObject);
     procedure btnClientesClick(Sender: TObject);
     procedure Clientes1Click(Sender: TObject);
+    procedure Items1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -57,6 +58,13 @@ begin
 end;
 
 procedure TFrmMenu.Clientes1Click(Sender: TObject);
+begin
+  FrmClientes := TFrmClientes.Create(self);
+  FrmClientes.novoCliente;
+  FrmClientes.ShowModal;
+end;
+
+procedure TFrmMenu.Items1Click(Sender: TObject);
 begin
   FrmClientes := TFrmClientes.Create(self);
   FrmClientes.ShowModal;

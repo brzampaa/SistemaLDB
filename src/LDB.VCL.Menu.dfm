@@ -13639,7 +13639,7 @@ object FrmMenu: TFrmMenu
     ExplicitTop = 40
   end
   object btnClientes: TSpeedButton
-    Left = 53
+    Left = 50
     Top = 61
     Width = 145
     Height = 145
@@ -15698,7 +15698,7 @@ object FrmMenu: TFrmMenu
     OnClick = btnClientesClick
   end
   object btnPedidos: TSpeedButton
-    Left = 212
+    Left = 211
     Top = 61
     Width = 145
     Height = 145
@@ -19814,7 +19814,7 @@ object FrmMenu: TFrmMenu
       0000000000000000000000000000000000000000000000000000}
   end
   object btnRelatorios: TSpeedButton
-    Left = 533
+    Left = 534
     Top = 61
     Width = 145
     Height = 145
@@ -21872,14 +21872,14 @@ object FrmMenu: TFrmMenu
       0000000000000000000000000000000000000000000000000000}
   end
   object lblClientes: TLabel
-    Left = 105
+    Left = 81
     Top = 212
-    Width = 38
+    Width = 82
     Height = 13
-    Caption = 'Clientes'
+    Caption = 'Pesquisar Cliente'
   end
   object lblPedidos: TLabel
-    Left = 266
+    Left = 265
     Top = 212
     Width = 37
     Height = 13
@@ -21893,7 +21893,7 @@ object FrmMenu: TFrmMenu
     Caption = 'Estoque'
   end
   object lblRelatorios: TLabel
-    Left = 581
+    Left = 582
     Top = 212
     Width = 48
     Height = 13

@@ -1,4 +1,4 @@
-unit LDB.VCL.Clientes;
+Ôªøunit LDB.VCL.Clientes;
 
 interface
 
@@ -46,6 +46,7 @@ type
     btnEditar: TSpeedButton;
     btnCancelar: TSpeedButton;
     btnNovo: TSpeedButton;
+    btnExcluir: TSpeedButton;
     procedure txtPesquisarKeyUp(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormCreate(Sender: TObject);
@@ -55,10 +56,13 @@ type
     procedure btnSalvarClick(Sender: TObject);
     procedure pgPesquisarShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnNovoClick(Sender: TObject);
+    procedure btnExcluirClick(Sender: TObject);
   private
     procedure mostrarCliente;
     procedure desativarCampos;
     procedure ativarCampos;
+    procedure limparCampos;
   public
     procedure novoCliente;
     { Public declarations }
@@ -67,6 +71,7 @@ type
 var
   FrmClientes: TFrmClientes;
   c : TCliente;
+  clienteId : integer;
 
 implementation
 
@@ -91,11 +96,22 @@ end;
 
 procedure TFrmClientes.btnCancelarClick(Sender: TObject);
 begin
-  mostrarCliente;
-  desativarCampos;
-  btnCancelar.Enabled := False;
-  btnSalvar.Enabled := False;
-  btnEditar.Enabled := True;
+  if Assigned(c) then
+  begin
+    mostrarCliente;
+    desativarCampos;
+    btnCancelar.Enabled := False;
+    btnSalvar.Enabled := False;
+    btnEditar.Enabled := True;
+    btnNovo.Enabled := True;
+    btnExcluir.Enabled := True;
+  end
+  else
+  begin
+    pgcClientes.TabIndex := 0;
+    //Close;
+    //ModalResult := mrCancel;
+  end;
 end;
 
 procedure TFrmClientes.btnEditarClick(Sender: TObject);
@@ -105,14 +121,42 @@ begin
   btnSalvar.Enabled := True;
   btnEditar.Enabled := False;
   btnNovo.Enabled := False;
+  btnExcluir.Enabled := False;
+end;
+
+procedure TFrmClientes.btnExcluirClick(Sender: TObject);
+var
+  res : Integer;
+  Cliente : String;
+begin
+  //res := messageDlg('Deseja realmente excluir o cliente: ' + '[' + txtID.Text + '] ' + txtNome.Text + ' ' + txtSobrenome.Text, mtError, mbOkCancel, 0);
+  Cliente := PChar('Deseja realmente excluir o cliente: ' + '[' + txtID.Text + '] ' + txtNome.Text + ' ' + txtSobrenome.Text) + '?';
+  res := Application.MessageBox(PChar(Cliente), 'Aten√ß√£o!', mb_OKCANCEL + mb_iconquestion + MB_SYSTEMMODAL);
+  if res = mrOk then
+  begin
+    showMessage('Ok');
+  end;
+
+end;
+
+procedure TFrmClientes.btnNovoClick(Sender: TObject);
+begin
+  ativarCampos;
+  limparCampos;
+  novoCliente;
+  FreeAndNil(c);
 end;
 
 procedure TFrmClientes.btnSalvarClick(Sender: TObject);
 var
   Cli : TCliente;
+  s : string;
 begin
   Cli := TCliente.Create;
-  Cli.IdCliente := strToInt(txtID.Text);
+  if txtId.Text <> '' then
+  begin
+    Cli.IdCliente := strToInt(txtID.Text);
+  end;
   Cli.Titulo := cbxTitulo.Items[cbxTitulo.ItemIndex];
   Cli.Nome := txtNome.Text;
   Cli.Sobrenome := txtSobrenome.Text;
@@ -125,20 +169,48 @@ begin
   Cli.Estado := cbxEstado.Items[cbxEstado.ItemIndex];
   Cli.CEP := txtCEP.Text;
 
-  if TCliente.Create.atualizar(Cli) then
+  if txtId.Text <> '' then
   begin
-    messageDlg('Cliente atualizado com sucesso!', mtInformation, [mbOk], 0);
-    desativarCampos;
-    btnSalvar.Enabled := False;
-    btnEditar.Enabled := True;
-    btnCancelar.Enabled := False;
-    btnNovo.Enabled := True;
+    if TCliente.Create.atualizar(Cli) then
+    begin
+      messageDlg('Cliente atualizado com sucesso!', mtInformation, [mbOk], 0);
+      desativarCampos;
+      btnSalvar.Enabled := False;
+      btnEditar.Enabled := True;
+      btnCancelar.Enabled := False;
+      btnNovo.Enabled := True;
+      btnExcluir.Enabled := True;
+    end
+    else
+    begin
+      messageDlg('Falha ao atualizar o cliente!', mtError, [mbOk], 0);
+    end;
+  end
+  else
+  begin
+    clienteId := TCliente.Create.salvar(Cli);
+    if clienteId <> -1 then
+    begin
+      messageDlg('Cliente registrado com sucesso!', mtInformation, [mbOk], 0);
+      mostrarCliente;
+      desativarCampos;
+      btnSalvar.Enabled := False;
+      btnEditar.Enabled := True;
+      btnCancelar.Enabled := False;
+      btnNovo.Enabled := True;
+      btnExcluir.Enabled := True;
+    end
+    else
+    begin
+      messageDlg('Falha ao salvar o cliente!', mtError, [mbOk], 0);
+    end;
   end;
+
 end;
 
 procedure TFrmClientes.dbgClientesDblClick(Sender: TObject);
 begin
-  c := TCliente.Create.pesquisar(strToInt(dbgClientes.Columns.Items[0].Field.Text));
+  clienteId := strToInt(dbgClientes.Columns.Items[0].Field.Text);
   mostrarCliente;
 end;
 
@@ -159,10 +231,10 @@ end;
 
 procedure TFrmClientes.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-if c <> nil then
-begin
-  c.Free;
-end;
+  if Assigned(c) then
+  begin
+    FreeAndNil(c);
+  end;
 end;
 
 procedure TFrmClientes.FormCreate(Sender: TObject);
@@ -173,10 +245,28 @@ begin
   dbgClientes.EditorMode := False;
 end;
 
+procedure TFrmClientes.limparCampos;
+begin
+  txtID.Text := '';
+  cbxTitulo.ItemIndex := 0;
+  txtNome.Text := '';
+  txtSobrenome.Text := '';
+  txtTelefone.Text := '';
+  txtCelular.Text := '';
+  txtEndereco.Text := '';
+  txtNumero.Text := '';
+  txtComplemento.Text := '';
+  txtCidade.Text := '';
+  cbxEstado.ItemIndex := 0;
+  txtCEP.Text := '';
+  txtNome.SetFocus;
+end;
+
 procedure TFrmClientes.mostrarCliente;
 var
   i : Integer;
 begin
+  c := TCliente.Create.pesquisar(clienteId);
   txtID.Text := intToStr(c.IdCliente);
   cbxTitulo.ItemIndex := cbxTitulo.Items.IndexOf(c.Titulo);
   txtNome.Text := c.Nome;
@@ -199,6 +289,7 @@ begin
   btnSalvar.Enabled := True;
   btnEditar.Enabled := False;
   btnCancelar.Enabled := True;
+  btnExcluir.Enabled := False;
   ativarCampos;
 end;
 
@@ -208,7 +299,7 @@ begin
   begin
     Close;
     SQL.Clear;
-    SQL.Add('SELECT id_cliente AS ID, CONCAT(nome, " ", sobrenome) AS Cliente, endereco AS EndereÁo, fone_fixo AS Telefone FROM tb_cliente');
+    SQL.Add('SELECT id_cliente AS ID, CONCAT(nome, " ", sobrenome) AS Cliente, endereco AS Endere√ßo, fone_fixo AS Telefone FROM tb_cliente');
     Open;
   end;
 end;
@@ -223,15 +314,15 @@ begin
     case cbxCategoria.ItemIndex of
       0://Nome
       begin  
-        SQL.Add('SELECT id_cliente AS ID, CONCAT(nome, " ", sobrenome) AS Cliente, endereco AS EndereÁo, fone_fixo AS Telefone FROM tb_cliente WHERE nome LIKE "' + txtPesquisar.Text + '%"');
+        SQL.Add('SELECT id_cliente AS ID, CONCAT(nome, " ", sobrenome) AS Cliente, endereco AS Endere√ßo, fone_fixo AS Telefone FROM tb_cliente WHERE nome LIKE "' + txtPesquisar.Text + '%"');
       end;
-      1://EndereÁo
+      1://Endere√ßo
       begin
-        SQL.Add('SELECT id_cliente AS ID, CONCAT(nome, " ", sobrenome) AS Cliente, endereco AS EndereÁo, fone_fixo AS Telefone FROM tb_cliente WHERE endereco LIKE "' + txtPesquisar.Text + '%"');
+        SQL.Add('SELECT id_cliente AS ID, CONCAT(nome, " ", sobrenome) AS Cliente, endereco AS Endere√ßo, fone_fixo AS Telefone FROM tb_cliente WHERE endereco LIKE "' + txtPesquisar.Text + '%"');
       end;
       2://Telefone
       begin
-        SQL.Add('SELECT id_cliente AS ID, CONCAT(nome, " ", sobrenome) AS Cliente, endereco AS EndereÁo, fone_fixo AS Telefone FROM tb_cliente WHERE fone_fixo LIKE "' + txtPesquisar.Text + '%"');
+        SQL.Add('SELECT id_cliente AS ID, CONCAT(nome, " ", sobrenome) AS Cliente, endereco AS Endere√ßo, fone_fixo AS Telefone FROM tb_cliente WHERE fone_fixo LIKE "' + txtPesquisar.Text + '%"');
       end;
     end;
     Open;
