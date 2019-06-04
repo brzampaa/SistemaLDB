@@ -1,6 +1,7 @@
 object FrmMenu: TFrmMenu
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Sistema LDB'
   ClientHeight = 268
@@ -19812,6 +19813,7 @@ object FrmMenu: TFrmMenu
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000}
+    OnClick = btnEstoqueClick
   end
   object btnRelatorios: TSpeedButton
     Left = 534
@@ -21879,18 +21881,18 @@ object FrmMenu: TFrmMenu
     Caption = 'Pesquisar Cliente'
   end
   object lblPedidos: TLabel
-    Left = 265
+    Left = 253
     Top = 212
-    Width = 37
+    Width = 60
     Height = 13
-    Caption = 'Pedidos'
+    Caption = 'Novo Pedido'
   end
   object lblEstoque: TLabel
-    Left = 425
+    Left = 400
     Top = 212
-    Width = 39
+    Width = 88
     Height = 13
-    Caption = 'Estoque'
+    Caption = 'Consultar Estoque'
   end
   object lblRelatorios: TLabel
     Left = 582

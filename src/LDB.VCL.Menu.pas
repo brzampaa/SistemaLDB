@@ -36,6 +36,7 @@ type
     procedure btnClientesClick(Sender: TObject);
     procedure Clientes1Click(Sender: TObject);
     procedure Items1Click(Sender: TObject);
+    procedure btnEstoqueClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,12 +50,18 @@ implementation
 
 {$R *.dfm}
 
-uses LDB.VCL.Clientes;
+uses LDB.VCL.Clientes, LDB.VCL.Estoque;
 
 procedure TFrmMenu.btnClientesClick(Sender: TObject);
 begin
   FrmClientes := TFrmClientes.Create(self);
   FrmClientes.ShowModal;
+end;
+
+procedure TFrmMenu.btnEstoqueClick(Sender: TObject);
+begin
+  frmEstoque := TfrmEstoque.Create(self);
+  frmEstoque.ShowModal;
 end;
 
 procedure TFrmMenu.Clientes1Click(Sender: TObject);

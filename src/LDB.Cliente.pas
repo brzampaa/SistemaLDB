@@ -1,7 +1,7 @@
 unit LDB.Cliente;
 
 interface
-uses SysUtils;
+uses SysUtils, FireDAC.Stan.Param;
 type
 
 TCliente = class
@@ -197,17 +197,38 @@ end;
 
 procedure TCliente.SetCelular(const Value: string);
 begin
-  FCelular := Value;
+  if Length(Value) = 11 then
+  begin
+    FCelular := Value;
+  end
+  else
+  begin
+    raise Exception.Create('O número do celular ' + Value +' é inválido.');
+  end;
 end;
 
 procedure TCliente.SetCEP(const Value: string);
 begin
-  FCEP := Value;
+  if Length(Value) = 8 then
+  begin
+    FCelular := Value;
+  end
+  else
+  begin
+    raise Exception.Create('O CEP ' + Value +' é inválido.');
+  end;
 end;
 
 procedure TCliente.SetCidade(const Value: string);
 begin
-  FCidade := Value;
+  if Value <> '' then
+  begin
+    FCidade := Value;
+  end
+  else
+  begin
+    raise Exception.Create('Cidade não informada.');
+  end;
 end;
 
 procedure TCliente.SetComplemento(const Value: string);
@@ -217,7 +238,14 @@ end;
 
 procedure TCliente.SetEndereco(const Value: string);
 begin
-  FEndereco := Value;
+  if Value <> '' then
+  begin
+    FEndereco := Value;
+  end
+  else
+  begin
+    raise Exception.Create('O endereço não pode estar vazio.');
+  end;
 end;
 
 procedure TCliente.SetEstado(const Value: string);
@@ -237,7 +265,14 @@ end;
 
 procedure TCliente.SetNome(const Value: string);
 begin
-  FNome := Value;
+  if Value <> '' then
+  begin
+    FNome := Value;
+  end
+  else
+  begin
+    raise Exception.Create('O nome não pode estar vazio.');
+  end;
 end;
 
 procedure TCliente.SetNumero(const Value: string);
@@ -247,7 +282,14 @@ end;
 
 procedure TCliente.SetSobrenome(const Value: string);
 begin
-  FSobrenome := Value;
+  if Value <> '' then
+  begin
+    FSobrenome := Value;
+  end
+  else
+  begin
+    raise Exception.Create('O sobrenome não pode estar vazio.');
+  end;
 end;
 
 procedure TCliente.SetTelefone(const Value: string);
@@ -260,8 +302,6 @@ begin
   begin
     raise Exception.Create('O número de telefone ' + Value +' é inválido.');
   end;
-
-
 end;
 
 procedure TCliente.SetTitulo(const Value: string);

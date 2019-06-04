@@ -7,7 +7,8 @@ uses
   Vcl.Styles,
   LDB.VCL.Clientes in 'src\LDB.VCL.Clientes.pas' {FrmClientes},
   LBD.SQL.DataModule in 'src\LBD.SQL.DataModule.pas' {dm: TDataModule},
-  LDB.Cliente in 'src\LDB.Cliente.pas';
+  LDB.Cliente in 'src\LDB.Cliente.pas',
+  LDB.VCL.Estoque in 'src\LDB.VCL.Estoque.pas' {frmEstoque};
 
 {$R *.res}
 
@@ -18,5 +19,6 @@ begin
   Application.CreateForm(TFrmMenu, FrmMenu);
   Application.CreateForm(TFrmClientes, FrmClientes);
   Application.CreateForm(Tdm, dm);
+  Application.CreateForm(TfrmEstoque, frmEstoque);
   Application.Run;
 end.

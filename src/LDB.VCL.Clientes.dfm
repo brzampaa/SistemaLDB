@@ -1,6 +1,7 @@
 object FrmClientes: TFrmClientes
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Sistema LDB | Clientes'
   ClientHeight = 427
@@ -13691,13 +13692,13 @@ object FrmClientes: TFrmClientes
           item
             Expanded = False
             FieldName = 'Cliente'
-            Width = 194
+            Width = 190
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'Endere'#231'o'
-            Width = 255
+            Width = 230
             Visible = True
           end
           item

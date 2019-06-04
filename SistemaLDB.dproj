@@ -107,6 +107,10 @@
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="src\LDB.Cliente.pas"/>
+        <DCCReference Include="src\LDB.VCL.Estoque.pas">
+            <Form>frmEstoque</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -189,6 +189,7 @@ begin
       btnCancelar.Enabled := False;
       btnNovo.Enabled := True;
       btnExcluir.Enabled := True;
+      //pgcClientes.TabIndex := 0;
     end
     else
     begin
@@ -208,6 +209,7 @@ begin
       btnCancelar.Enabled := False;
       btnNovo.Enabled := True;
       btnExcluir.Enabled := True;
+      //pgcClientes.TabIndex := 0;
     end
     else
     begin

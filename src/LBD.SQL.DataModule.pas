@@ -15,6 +15,8 @@ type
     Conn: TFDConnection;
     Query: TFDQuery;
     DS: TDataSource;
+    QueryEstoque: TFDQuery;
+    DSEstoque: TDataSource;
   private
     { Private declarations }
   public
