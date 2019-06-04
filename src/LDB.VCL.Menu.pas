@@ -37,6 +37,7 @@ type
     procedure Clientes1Click(Sender: TObject);
     procedure Items1Click(Sender: TObject);
     procedure btnEstoqueClick(Sender: TObject);
+    procedure btnPedidosClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -59,6 +60,12 @@ begin
 end;
 
 procedure TFrmMenu.btnEstoqueClick(Sender: TObject);
+begin
+  frmEstoque := TfrmEstoque.Create(self);
+  frmEstoque.ShowModal;
+end;
+
+procedure TFrmMenu.btnPedidosClick(Sender: TObject);
 begin
   frmEstoque := TfrmEstoque.Create(self);
   frmEstoque.ShowModal;

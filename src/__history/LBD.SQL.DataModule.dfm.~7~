@@ -1,7 +1,7 @@
 object dm: Tdm
   OldCreateOrder = False
   Height = 193
-  Width = 177
+  Width = 258
   object Conn: TFDConnection
     Params.Strings = (
       'DriverID=MySQL'

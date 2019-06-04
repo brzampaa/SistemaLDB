@@ -3,7 +3,7 @@ object frmEstoque: TfrmEstoque
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Sistema LDB | Estoque'
-  ClientHeight = 444
+  ClientHeight = 422
   ClientWidth = 670
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,14 +16,14 @@ object frmEstoque: TfrmEstoque
   OnShow = FormShow
   DesignSize = (
     670
-    444)
+    422)
   PixelsPerInch = 96
   TextHeight = 13
   object imgBkpEstoque: TImage
     Left = 0
     Top = 0
     Width = 670
-    Height = 444
+    Height = 422
     Align = alClient
     Picture.Data = {
       0954506E67496D61676589504E470D0A1A0A0000000D4948445200000F000000
@@ -13643,8 +13643,8 @@ object frmEstoque: TfrmEstoque
     ExplicitHeight = 417
   end
   object btnEntrada: TSpeedButton
-    Left = 384
-    Top = 40
+    Left = 395
+    Top = 56
     Width = 122
     Height = 42
     Caption = 'Entrada'
@@ -13783,7 +13783,7 @@ object frmEstoque: TfrmEstoque
   end
   object btnSaida: TSpeedButton
     Left = 523
-    Top = 40
+    Top = 56
     Width = 122
     Height = 42
     Caption = 'Sa'#237'da'
@@ -13922,7 +13922,7 @@ object frmEstoque: TfrmEstoque
   end
   object btnEstNovo: TSpeedButton
     Left = 15
-    Top = 40
+    Top = 56
     Width = 122
     Height = 42
     Caption = 'Novo Produto'
@@ -14059,10 +14059,17 @@ object frmEstoque: TfrmEstoque
       0000000000000000000000000000000000000000000000000000}
     Spacing = 7
   end
+  object lblEstoquePesquisa: TLabel
+    Left = 15
+    Top = 10
+    Width = 91
+    Height = 13
+    Caption = 'Pesquisar produto:'
+  end
   object DBGrid1: TDBGrid
     AlignWithMargins = True
     Left = 15
-    Top = 126
+    Top = 104
     Width = 630
     Height = 301
     Margins.Left = 20
@@ -14107,5 +14114,13 @@ object frmEstoque: TfrmEstoque
         Width = 94
         Visible = True
       end>
+  end
+  object txtProduto: TEdit
+    Left = 15
+    Top = 29
+    Width = 630
+    Height = 21
+    TabOrder = 1
+    OnKeyUp = txtProdutoKeyUp
   end
 end

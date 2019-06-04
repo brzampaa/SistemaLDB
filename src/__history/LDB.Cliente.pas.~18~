@@ -114,7 +114,7 @@ begin
   begin
     Close;
     SQL.Clear;
-    SQL.Add('SELECT * FROM tb_cliente WHERE id_cliente = :id AND fg_ativo = 1');
+    SQL.Add('SELECT * FROM tb_cliente WHERE id_cliente = :id');
     ParamByName('id').Value := id;
     Open;
     Self.IdCliente := FieldByName('id_cliente').AsInteger;
@@ -141,9 +141,7 @@ with LBD.SQL.DataModule.dm.Query do
   begin
     Close;
     SQL.Clear;
-    //SQL.Add('DELETE FROM tb_cliente WHERE id_cliente = :id');
-    //SQL.Add('UPDATE tb_cliente SET fg_ativo = 0 WHERE id_cliente = :id');
-    SQL.Add('UPDATE tb_cliente SET fg_ativo = 0 WHERE id_cliente = :id');
+    SQL.Add('DELETE FROM tb_cliente WHERE id_cliente = :id');
     ParamByName('id').Value := id;
     ExecSQL;
     if RowsAffected > 0 then

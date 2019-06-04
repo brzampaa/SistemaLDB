@@ -1,7 +1,7 @@
 object dm: Tdm
   OldCreateOrder = False
   Height = 193
-  Width = 177
+  Width = 258
   object Conn: TFDConnection
     Params.Strings = (
       'DriverID=MySQL'
@@ -20,8 +20,7 @@ object dm: Tdm
     SQL.Strings = (
       
         'SELECT id_cliente AS ID, CONCAT(nome, " ", sobrenome) AS Cliente' +
-        ', endereco AS Endere'#231'o, fone_fixo AS Telefone FROM tb_cliente WH' +
-        'ERE fg_ativo = 1')
+        ', endereco AS Endere'#231'o, fone_fixo AS Telefone FROM tb_cliente')
     Left = 31
     Top = 73
   end
