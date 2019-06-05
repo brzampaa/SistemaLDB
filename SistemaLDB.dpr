@@ -6,9 +6,11 @@ uses
   Vcl.Themes,
   Vcl.Styles,
   LDB.VCL.Clientes in 'src\LDB.VCL.Clientes.pas' {FrmClientes},
-  LBD.SQL.DataModule in 'src\LBD.SQL.DataModule.pas' {dm: TDataModule},
+  LDB.SQL.DataModule in 'src\LDB.SQL.DataModule.pas' {dm: TDataModule},
   LDB.Cliente in 'src\LDB.Cliente.pas',
-  LDB.VCL.Estoque in 'src\LDB.VCL.Estoque.pas' {frmEstoque};
+  LDB.VCL.Estoque in 'src\LDB.VCL.Estoque.pas' {frmEstoque},
+  LDB.Item in 'src\LDB.Item.pas',
+  LDB.VCL.Itens in 'src\LDB.VCL.Itens.pas' {frmItens};
 
 {$R *.res}
 
@@ -20,5 +22,6 @@ begin
   Application.CreateForm(TFrmClientes, FrmClientes);
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(TfrmEstoque, frmEstoque);
+  Application.CreateForm(TfrmItens, frmItens);
   Application.Run;
 end.

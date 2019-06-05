@@ -101,7 +101,7 @@
             <Form>FrmClientes</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\LBD.SQL.DataModule.pas">
+        <DCCReference Include="src\LDB.SQL.DataModule.pas">
             <Form>dm</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
@@ -109,6 +109,11 @@
         <DCCReference Include="src\LDB.Cliente.pas"/>
         <DCCReference Include="src\LDB.VCL.Estoque.pas">
             <Form>frmEstoque</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\LDB.Item.pas"/>
+        <DCCReference Include="src\LDB.VCL.Itens.pas">
+            <Form>frmItens</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
@@ -615,6 +620,7 @@
             <Platforms>
                 <Platform value="Win32">True</Platform>
             </Platforms>
+            <ModelSupport>False</ModelSupport>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>

@@ -57,13 +57,13 @@ end;
 
 implementation
 
-uses LBD.SQL.DataModule;
+uses LDB.SQL.DataModule;
 
 { TCliente }
 
 function TCliente.atualizar(c: TCliente): boolean;
 begin
-  with LBD.SQL.DataModule.dm.Query do
+  with LDB.SQL.DataModule.dm.Query do
   begin
     Close;
     SQL.Clear;
@@ -110,7 +110,7 @@ end;
 
 function TCliente.pesquisar(id : integer): TCliente;
 begin
-  with LBD.SQL.DataModule.dm.Query do
+  with LDB.SQL.DataModule.dm.Query do
   begin
     Close;
     SQL.Clear;
@@ -137,7 +137,7 @@ end;
 
 function TCliente.deletar(id: integer): boolean;
 begin
-with LBD.SQL.DataModule.dm.Query do
+with LDB.SQL.DataModule.dm.Query do
   begin
     Close;
     SQL.Clear;
@@ -159,7 +159,7 @@ end;
 
 function TCliente.inserir(c: TCliente): integer;
 begin
-  with LBD.SQL.DataModule.dm.Query do
+  with LDB.SQL.DataModule.dm.Query do
   begin
     Close;
     SQL.Clear;

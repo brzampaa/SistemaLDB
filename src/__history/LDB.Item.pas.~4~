@@ -1,0 +1,17 @@
+unit LDB.Item;
+
+interface
+type
+TItem = class
+private
+protected
+public
+property idItem : integer;
+property descricao : String;
+property precoCusto :
+
+published
+end;
+implementation
+
+end.

@@ -77,7 +77,7 @@ implementation
 
 {$R *.dfm}
 
-uses LBD.SQL.DataModule;
+uses LDB.SQL.DataModule;
 
 procedure TFrmClientes.ativarCampos;
 begin
@@ -312,7 +312,7 @@ end;
 
 procedure TFrmClientes.pgPesquisarShow(Sender: TObject);
 begin
-  with LBD.SQL.DataModule.dm.Query do
+  with LDB.SQL.DataModule.dm.Query do
   begin
     Close;
     SQL.Clear;
@@ -324,7 +324,7 @@ end;
 procedure TFrmClientes.txtPesquisarKeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  with LBD.SQL.DataModule.dm.Query do
+  with LDB.SQL.DataModule.dm.Query do
   begin
     Close;
     SQL.Clear;

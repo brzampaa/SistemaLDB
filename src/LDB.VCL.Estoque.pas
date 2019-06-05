@@ -19,6 +19,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure txtProdutoKeyUp(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure btnEstNovoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,17 +33,23 @@ implementation
 
 {$R *.dfm}
 
-uses LBD.SQL.DataModule;
+uses LDB.SQL.DataModule, LDB.VCL.Itens;
+
+procedure TfrmEstoque.btnEstNovoClick(Sender: TObject);
+begin
+  frmItens := TfrmItens.Create(self);
+  frmItens.ShowModal;
+end;
 
 procedure TfrmEstoque.FormShow(Sender: TObject);
 begin
-  LBD.SQL.DataModule.dm.QueryEstoque.Open();
+  LDB.SQL.DataModule.dm.QueryEstoque.Open();
 end;
 
 procedure TfrmEstoque.txtProdutoKeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-with LBD.SQL.DataModule.dm.QueryEstoque do
+with LDB.SQL.DataModule.dm.QueryEstoque do
   begin
     Close;
     SQL.Clear;

@@ -13649,7 +13649,7 @@ object FrmClientes: TFrmClientes
     Margins.Top = 20
     Margins.Right = 20
     Margins.Bottom = 20
-    ActivePage = pgPesquisar
+    ActivePage = pgNovo
     Align = alClient
     TabOrder = 0
     object pgPesquisar: TTabSheet

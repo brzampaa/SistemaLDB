@@ -14058,6 +14058,7 @@ object frmEstoque: TfrmEstoque
       42DA5CAF43C15CB043985AAE42496DB648070000000000000000000000000000
       0000000000000000000000000000000000000000000000000000}
     Spacing = 7
+    OnClick = btnEstNovoClick
   end
   object lblEstoquePesquisa: TLabel
     Left = 15
