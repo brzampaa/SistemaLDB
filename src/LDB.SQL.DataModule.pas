@@ -17,6 +17,8 @@ type
     DS: TDataSource;
     QueryEstoque: TFDQuery;
     DSEstoque: TDataSource;
+    QueryMov: TFDQuery;
+    DSMov: TDataSource;
   private
     { Private declarations }
   public

@@ -10,9 +10,7 @@ uses
 type
   TfrmEstoque = class(TForm)
     imgBkpEstoque: TImage;
-    DBGrid1: TDBGrid;
-    btnEntrada: TSpeedButton;
-    btnSaida: TSpeedButton;
+    dbgItens: TDBGrid;
     btnEstNovo: TSpeedButton;
     txtProduto: TEdit;
     lblEstoquePesquisa: TLabel;
@@ -20,6 +18,7 @@ type
     procedure txtProdutoKeyUp(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure btnEstNovoClick(Sender: TObject);
+    procedure dbgItensDblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -41,6 +40,13 @@ begin
   frmItens.ShowModal;
 end;
 
+procedure TfrmEstoque.dbgItensDblClick(Sender: TObject);
+begin
+  frmItens := TfrmItens.Create(self);
+  frmItens.IdItem := strToInt(dbgItens.Columns.Items[0].Field.Text);
+  frmItens.ShowModal;
+end;
+
 procedure TfrmEstoque.FormShow(Sender: TObject);
 begin
   LDB.SQL.DataModule.dm.QueryEstoque.Open();
@@ -49,11 +55,12 @@ end;
 procedure TfrmEstoque.txtProdutoKeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-with LDB.SQL.DataModule.dm.QueryEstoque do
+  with LDB.SQL.DataModule.dm.QueryEstoque do
   begin
     Close;
     SQL.Clear;
-    SQL.Add('SELECT i.id_item AS ID, i.ds_item AS Descrição, i.preco_custo AS "Preço Custo", i.preco_venda AS "Preço Venda", e.quantidade AS Quantidade FROM tb_item AS i INNER JOIN tb_estoque as e ON (i.id_item = e.id_item) WHERE i.fg_ativo = 1 AND i.ds_item LIKE "' + txtProduto.Text + '%";');
+    SQL.Add('SELECT i.id_item AS ID, i.ds_item AS Descrição, REPLACE(FORMAT(i.preco_custo,2),".",",") AS "Preço Custo", REPLACE(FORMAT(i.preco_venda,2),".",",") AS "Preço Venda", e.quantidade AS Quantidade');
+    SQL.Add('FROM tb_item AS i INNER JOIN tb_estoque as e ON (i.id_item = e.id_item) WHERE i.fg_ativo = 1 AND i.ds_item LIKE "' + txtProduto.Text + '%";');
     Open;
   end;
 end;
