@@ -95,7 +95,6 @@ begin
     btnExcluir.Enabled := True;
     btnAdd.Enabled := False;
     btnRmv.Enabled := False;
-    txtQuantidade.Text := '';
   end
   else
   begin

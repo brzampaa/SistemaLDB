@@ -21873,6 +21873,7 @@ object FrmMenu: TFrmMenu
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000}
+    OnClick = btnRelatoriosClick
   end
   object lblClientes: TLabel
     Left = 81
@@ -21929,16 +21930,18 @@ object FrmMenu: TFrmMenu
       object Pesquisar1: TMenuItem
         Caption = 'Buscar'
         ShortCut = 49232
+        OnClick = Pesquisar1Click
       end
     end
     object Estoque1: TMenuItem
       Caption = 'Estoque'
       ShortCut = 16453
       object Entrada1: TMenuItem
-        Caption = 'Entrada'
+        Caption = 'Consultar'
       end
-      object Sada1: TMenuItem
-        Caption = 'Sa'#237'da'
+      object Cadastraritem1: TMenuItem
+        Caption = 'Cadastrar Item'
+        OnClick = Cadastraritem1Click
       end
     end
     object Relatrios1: TMenuItem
@@ -21946,12 +21949,15 @@ object FrmMenu: TFrmMenu
       ShortCut = 16466
       object Cientes1: TMenuItem
         Caption = 'Clientes'
+        OnClick = Cientes1Click
       end
       object Estoque2: TMenuItem
         Caption = 'Estoque'
+        OnClick = Estoque2Click
       end
       object Pedidos2: TMenuItem
         Caption = 'Pedidos'
+        OnClick = Pedidos2Click
       end
     end
   end

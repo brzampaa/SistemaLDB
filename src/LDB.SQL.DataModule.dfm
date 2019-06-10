@@ -1,20 +1,7 @@
 object dm: Tdm
   OldCreateOrder = False
   Height = 257
-  Width = 177
-  object Conn: TFDConnection
-    Params.Strings = (
-      'DriverID=MySQL'
-      'Compress=False'
-      'Database=ldb'
-      'Password=@Admin0901'
-      'Server=localhost'
-      'User_Name=admin')
-    Connected = True
-    LoginPrompt = False
-    Left = 27
-    Top = 17
-  end
+  Width = 174
   object Query: TFDQuery
     Connection = Conn
     SQL.Strings = (
@@ -65,5 +52,15 @@ object dm: Tdm
     DataSet = QueryMov
     Left = 112
     Top = 192
+  end
+  object Conn: TFDConnection
+    Params.Strings = (
+      'Server=remotemysql.com '
+      'Database=hYoQlMJsYL'
+      'User_Name=hYoQlMJsYL'
+      'Password=spEpEdKnp2'
+      'DriverID=MySQL')
+    Left = 32
+    Top = 16
   end
 end

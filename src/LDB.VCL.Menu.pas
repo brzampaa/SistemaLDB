@@ -18,7 +18,6 @@ type
     Novo1: TMenuItem;
     Pesquisar1: TMenuItem;
     Entrada1: TMenuItem;
-    Sada1: TMenuItem;
     Relatrios1: TMenuItem;
     Estoque2: TMenuItem;
     Pedidos2: TMenuItem;
@@ -32,12 +31,19 @@ type
     lblPedidos: TLabel;
     lblEstoque: TLabel;
     lblRelatorios: TLabel;
+    Cadastraritem1: TMenuItem;
     procedure Novo1Click(Sender: TObject);
     procedure btnClientesClick(Sender: TObject);
     procedure Clientes1Click(Sender: TObject);
     procedure Items1Click(Sender: TObject);
     procedure btnEstoqueClick(Sender: TObject);
     procedure btnPedidosClick(Sender: TObject);
+    procedure Pesquisar1Click(Sender: TObject);
+    procedure Cadastraritem1Click(Sender: TObject);
+    procedure btnRelatoriosClick(Sender: TObject);
+    procedure Cientes1Click(Sender: TObject);
+    procedure Estoque2Click(Sender: TObject);
+    procedure Pedidos2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -51,7 +57,7 @@ implementation
 
 {$R *.dfm}
 
-uses LDB.VCL.Clientes, LDB.VCL.Estoque;
+uses LDB.VCL.Clientes, LDB.VCL.Estoque, LDB.VCL.Itens;
 
 procedure TFrmMenu.btnClientesClick(Sender: TObject);
 begin
@@ -67,8 +73,23 @@ end;
 
 procedure TFrmMenu.btnPedidosClick(Sender: TObject);
 begin
-  frmEstoque := TfrmEstoque.Create(self);
-  frmEstoque.ShowModal;
+  showMessage('Novo Pedido');
+end;
+
+procedure TFrmMenu.btnRelatoriosClick(Sender: TObject);
+begin
+  showMessage('Relatórios');
+end;
+
+procedure TFrmMenu.Cadastraritem1Click(Sender: TObject);
+begin
+  frmItens := TfrmItens.Create(self);
+  frmItens.ShowModal;
+end;
+
+procedure TFrmMenu.Cientes1Click(Sender: TObject);
+begin
+  showMessage('Relatório Clientes');
 end;
 
 procedure TFrmMenu.Clientes1Click(Sender: TObject);
@@ -76,6 +97,11 @@ begin
   FrmClientes := TFrmClientes.Create(self);
   FrmClientes.novoCliente;
   FrmClientes.ShowModal;
+end;
+
+procedure TFrmMenu.Estoque2Click(Sender: TObject);
+begin
+  showMessage('Relatório Estoque');
 end;
 
 procedure TFrmMenu.Items1Click(Sender: TObject);
@@ -87,6 +113,16 @@ end;
 procedure TFrmMenu.Novo1Click(Sender: TObject);
 begin
   showMessage('Novo Pedido');
+end;
+
+procedure TFrmMenu.Pedidos2Click(Sender: TObject);
+begin
+  showMessage('Relatório Pedidos');
+end;
+
+procedure TFrmMenu.Pesquisar1Click(Sender: TObject);
+begin
+  showMessage('Buscar Pedido');
 end;
 
 end.

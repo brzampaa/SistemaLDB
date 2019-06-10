@@ -12,13 +12,13 @@ uses
 
 type
   Tdm = class(TDataModule)
-    Conn: TFDConnection;
     Query: TFDQuery;
     DS: TDataSource;
     QueryEstoque: TFDQuery;
     DSEstoque: TDataSource;
     QueryMov: TFDQuery;
     DSMov: TDataSource;
+    Conn: TFDConnection;
   private
     { Private declarations }
   public
